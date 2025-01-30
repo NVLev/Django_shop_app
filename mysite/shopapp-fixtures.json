@@ -1,0 +1,147 @@
+[
+  {
+    "model": "shopapp.product",
+    "pk": 1,
+    "fields": {
+      "name": "Souvenir",
+      "description": "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"",
+      "price": "5.00",
+      "discount": 10,
+      "created_at": "2024-11-26T19:48:31.360Z",
+      "archived": true,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 3,
+    "fields": {
+      "name": "T-shirt",
+      "description": "",
+      "price": "1000.00",
+      "discount": 10,
+      "created_at": "2024-11-26T19:59:28.971Z",
+      "archived": false,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 4,
+    "fields": {
+      "name": "Cup",
+      "description": "",
+      "price": "250.00",
+      "discount": 25,
+      "created_at": "2024-11-26T19:59:28.979Z",
+      "archived": true,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 5,
+    "fields": {
+      "name": "Calendar",
+      "description": "",
+      "price": "380.00",
+      "discount": 0,
+      "created_at": "2024-11-26T19:59:28.986Z",
+      "archived": false,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 6,
+    "fields": {
+      "name": "Shopper",
+      "description": "Simple textile bag",
+      "price": "123.00",
+      "discount": 0,
+      "created_at": "2024-12-01T17:40:20.314Z",
+      "archived": false,
+      "created_by": 1
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 7,
+    "fields": {
+      "name": "Pullover",
+      "description": "Pullover with logo gray",
+      "price": "2050.00",
+      "discount": 10,
+      "created_at": "2024-12-11T15:08:36.201Z",
+      "archived": false,
+      "created_by": 2
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 1,
+    "fields": {
+      "delivery_address": "Nevsky, 5, St.Peterssburg",
+      "promocode": "SALE234",
+      "created_at": "2024-11-26T21:06:26.392Z",
+      "user": 1,
+      "products": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 2,
+    "fields": {
+      "delivery_address": "Nevsky pr., 130\r\nSt.Petersburg, USA",
+      "promocode": "shop123",
+      "created_at": "2024-12-01T19:03:43.961Z",
+      "user": 1,
+      "products": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 3,
+    "fields": {
+      "delivery_address": "1st Avenue, NewYork, USA",
+      "promocode": "456Sh",
+      "created_at": "2024-12-01T19:04:21.973Z",
+      "user": 1,
+      "products": []
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 4,
+    "fields": {
+      "delivery_address": "Erevan, Armenia",
+      "promocode": "some words",
+      "created_at": "2024-12-01T19:10:56.296Z",
+      "user": 1,
+      "products": [
+        1,
+        4
+      ]
+    }
+  },
+  {
+    "model": "shopapp.order",
+    "pk": 5,
+    "fields": {
+      "delivery_address": "123 Nevsky USA",
+      "promocode": "Shop2lk",
+      "created_at": "2024-12-03T21:51:31.542Z",
+      "user": 1,
+      "products": [
+        3,
+        1
+      ]
+    }
+  }
+]

@@ -1,0 +1,37 @@
+{% extends 'shopapp/base.html' %}
+{% load cache %}
+
+{% block title %}
+    Shop Index 
+{% endblock title %}
+
+{% block body %}
+    <div>
+        <h1> Hello, Shop Index </h1>
+    </div>
+    <div>
+        <h2>Our products:</h2>
+        <ul>
+            {% for name, price in products %}
+            <li>
+                {{ name }} - {{ price }} rub.
+            </li>
+            {% empty %}
+            Товаров пока нет
+            {% endfor %}
+        </ul>
+    </div>
+
+
+<div>
+    <p></p>
+    {% lorem %}
+</div>
+
+{% cache 100 lorem %}
+    <div>
+        
+        <p>{% now "N j, Y, P" %}</p>
+    </div>
+{% endcache %}
+{% endblock %}

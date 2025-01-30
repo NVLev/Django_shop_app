@@ -1,0 +1,28 @@
+{% extends 'myauth/base.html' %}
+{% block title %}
+    About me
+{% endblock  %}
+
+{% block body %}
+<h1>User info</h1>
+    {% if user.is_authenticated %}
+    <h2>Detail</h2>  
+        <p>Username: {{ user.username }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {{ user.last_name }}</p>
+        <p>email: {{ user.email }}</p>
+        <p>Bio: {{ user.profile.bio }}</p>
+        
+        {% if user.profile.avatar %}
+            <img src="{{ user.profile.avatar.url }}" alt="Avatar" style="width: 200px; height: auto;">
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data" action="{% url 'myauth:about-me' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Upload Avatar</button>
+        </form>
+    {% else %}
+    <h2>User is anonymous</h2>
+    {% endif %}
+{% endblock %}

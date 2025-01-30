@@ -1,0 +1,49 @@
+{% extends 'shopapp/base.html' %}
+{% load i18n %}
+
+{% block title %}
+{% blocktranslate with pk=product.pk %}Product #{{ pk }}{% endblocktranslate %}
+{% endblock title %}
+
+{% block body %}
+{% blocktranslate with name=product.name %}Product - {{ name }}
+{% endblocktranslate %}
+{% blocktranslate with description=product.description %}Description: {{ description }}
+{% endblocktranslate %}
+{% blocktranslate with price=product.price %}Price: {{ price }}
+{% endblocktranslate %}
+{% blocktranslate with discount=product.discount %}Discount: {{ discount }}
+{% endblocktranslate %}
+{% blocktranslate with archived=product.archived %}Archived: {{ archived }}
+{% endblocktranslate %}
+
+{% if product.preview %}
+{% blocktranslate with preview_name=product.preview.name %}{{ preview_name }}
+{% endblocktranslate %}
+{% endif %}
+
+{% blocktranslate count counter=product.images.all|length %}
+One image:
+{% plural %}
+{{ counter }} images:
+{% endblocktranslate %}
+
+{% if product.images.all %}
+{% for image in product.images.all %}
+{% blocktranslate with image_name=image.image.name %}{{ image_name }}
+{% endblocktranslate %}
+{% blocktranslate with image_description=image.description %}{{ image_description }}
+{% endblocktranslate %}
+{% endfor %}
+{% else %}
+{% translate "No images uploaded yet" %}
+{% endif %}
+
+{% translate "Archive product" %}
+
+{% if user.is_superuser or product.created_by == user or perms.shopapp.change_product %}
+{% translate "Update product" %}
+{% endif %}
+
+{% translate "Back to products list" %}
+{% endblock body %}

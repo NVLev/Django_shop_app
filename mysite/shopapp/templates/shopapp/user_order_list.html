@@ -1,0 +1,50 @@
+{% extends 'shopapp/base.html' %}
+{% load cache %}
+
+{% block title %}
+    {% if user.is_superuser %}
+        Orders List
+    {% else %}
+        My Orders
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <h1>
+        User {{ owner.get_full_name|default:owner.username }}
+        {% cache 300 "user_orders_" owner_id %}
+            {% if object_list %}
+                has the following orders:
+            {% else %}
+                has no orders yet.
+            {% endif %}
+        {% endcache %}
+    </h1>
+
+    {% cache 300 "user_orders_" owner_id %}
+        {% if object_list %}
+            <div>
+                {% for order in object_list %}
+                    <p><a href="{% url 'shopapp:order_detail' pk=order.pk %}"><b>Details #{{ order.pk }}</b></a></p>
+                    <p><b>Ordered by:</b>  {{ order.user.get_full_name|default:order.user.username }}</p>
+                    <p><b>Promocode:</b> <code>{{ order.promocode }}</code></p>
+                    <p><b>Delivery Address:</b> {{ order.delivery_address }}</p>
+                    <div>
+                        Products in order:
+                        <ul>
+                            {% for product in order.products.all %}
+                                <li>{{ product.name }} -- {{ product.price }} rub.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endcache %}
+
+    <div>
+        {% if perms.shopapp.add_product %}
+            <a href="{% url 'shopapp:order_form' %}">Create a new order</a>
+        {% endif %}
+    </div>
+{% endblock %}
