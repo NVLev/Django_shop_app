@@ -13,3 +13,8 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install
 
 COPY mysite .
+
+RUN python manage.py collectstatic --noinput
+
+
+EXPOSE 8080

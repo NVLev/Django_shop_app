@@ -3,6 +3,7 @@ version: "3.12"
 services:
   app:
     build:
+      context: .
       dockerfile: ./Dockerfile
 
     command:
@@ -22,6 +23,9 @@ services:
         max-size: "200k"
     volumes:
       - ./mysite/database:/app/database
+      - ./staticfiles:/app/staticfiles
+    environment:
+      - DJANGO_DEBUG=1
 
 
 
