@@ -3,7 +3,7 @@ name = "django project"
 version = "0.1.0"
 description = ""
 authors = ["natalia_levant <an_smir@mail.ru>"]
-readme = "README.md"
+
 
 [tool.poetry.dependencies]
 python = "^3.12"
